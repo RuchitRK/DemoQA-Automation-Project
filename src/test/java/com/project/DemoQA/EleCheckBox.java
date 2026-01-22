@@ -40,7 +40,6 @@ public class EleCheckBox {
 		Thread.sleep(2000);
 		//checking check boxes after expanding
 		//driver.findElement(By.cssSelector("svg.rct-icon.rct-icon-uncheck")).click();
-		// This clicks the "Home" text specifically
 		driver.findElement(By.xpath("//span[@class='rct-title'][text()='Home']")).click();
 	}
 }
