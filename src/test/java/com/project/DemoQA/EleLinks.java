@@ -16,25 +16,26 @@ public class EleLinks {
 		WebDriverManager.edgedriver().setup();
 		WebDriver driver = new EdgeDriver();
 		driver.get("https://demoqa.com");
-		Thread.sleep(2000);
+		Thread.sleep(1000);
 		//1. to click on Elements
 		driver.findElement(By.xpath("//*[@id=\"app\"]/div/div/div[2]/div/div[1]")).click();
-		Thread.sleep(2000);
+		Thread.sleep(1000);
 		//1.6 to click on Links module
 		driver.findElement(By.xpath("//*[@id=\"item-5\"]/span")).click();
 		String tab1= driver.getWindowHandle();
-		Thread.sleep(2000);
+		Thread.sleep(1000);
 		driver.findElement(By.linkText("Home")).click();
-		Thread.sleep(2000);
+		Thread.sleep(1000);
 		driver.switchTo().window(tab1);
-		Thread.sleep(2000);
+		Thread.sleep(1000);
 		String dynLink = driver.findElement(By.id("dynamicLink")).getText();
 		System.out.println(dynLink);
 		//driver.findElement(By.id("dynamicLink")).click();
 		driver.findElement(By.xpath("//a[starts-with(text(), 'Home') and text() != 'Home']")).click();
-		Thread.sleep(2000);
+		Thread.sleep(1000);
 		driver.switchTo().window(tab1);
 		//api links
+		//created
 		System.out.println("Checking Created link");
 		driver.findElement(By.id("created")).click();
 		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
@@ -48,9 +49,11 @@ public class EleLinks {
 			System.out.println("Created Link didnt worked");
 			System.out.println(actualResponse);
 		}
-		Thread.sleep(2000);
+		Thread.sleep(1000);
+		//no content
 		System.out.println("Checking NO Content link");
 		driver.findElement(By.id("no-content")).click();
+		Thread.sleep(1000);
 		response = driver.findElement(By.id("linkResponse"));
 		actualResponse = response.getText();
 		if (actualResponse.contains("204") && actualResponse.contains("No Content")) {
@@ -61,7 +64,63 @@ public class EleLinks {
 			System.out.println("No Content Link didnt worked");
 			System.out.println(actualResponse);
 		}
-		
+		Thread.sleep(1000);
+		//moved
+		System.out.println("Checking Moved link");
+		driver.findElement(By.id("moved")).click();
+		Thread.sleep(1000);
+		response = driver.findElement(By.id("linkResponse"));
+		actualResponse = response.getText();
+		if (actualResponse.contains("301") && actualResponse.contains("Moved Permanently")) {
+			System.out.println("Moved Link Worked");
+			System.out.println(actualResponse);
+		}
+		else {
+			System.out.println("Moved Link didnt worked");
+			System.out.println(actualResponse);
+		}
+		//Unauthorized
+		System.out.println("Checking Unauthorized link");
+		driver.findElement(By.id("unauthorized")).click();
+		Thread.sleep(1000);
+		response = driver.findElement(By.id("linkResponse"));
+		actualResponse = response.getText();
+		if (actualResponse.contains("401") && actualResponse.contains("Unauthorized")) {
+			System.out.println("Unauthorized Link Worked");
+			System.out.println(actualResponse);
+		}
+		else {
+			System.out.println("Unauthorized Link didnt worked");
+			System.out.println(actualResponse);
+		}
+		//forbidden
+		System.out.println("Checking Forbidden link");
+		driver.findElement(By.id("forbidden")).click();
+		Thread.sleep(1000);
+		response = driver.findElement(By.id("linkResponse"));
+		actualResponse = response.getText();
+		if (actualResponse.contains("403") && actualResponse.contains("Forbidden")) {
+			System.out.println("Forbidden Link Worked");
+			System.out.println(actualResponse);
+		}
+		else {
+			System.out.println("Forbidden Link didnt worked");
+			System.out.println(actualResponse);
+		}
+		//Not Found - invalid-url
+		System.out.println("Checking Forbidden link");
+		driver.findElement(By.id("invalid-url")).click();
+		Thread.sleep(1000);
+		response = driver.findElement(By.id("linkResponse"));
+		actualResponse = response.getText();
+		if (actualResponse.contains("403") && actualResponse.contains("Not Found")) {
+			System.out.println("Not Found Link Worked");
+			System.out.println(actualResponse);
+		}
+		else {
+			System.out.println("Not Found Link didnt worked");
+			System.out.println(actualResponse);
+		}
 	}
 
 }
