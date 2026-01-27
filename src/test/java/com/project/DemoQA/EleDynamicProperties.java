@@ -1,8 +1,13 @@
 package com.project.DemoQA;
 
+import java.time.Duration;
+
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.edge.EdgeDriver;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
 
@@ -16,7 +21,13 @@ public class EleDynamicProperties {
 		driver.findElement(By.xpath("//*[@id=\"app\"]/div/div/div[2]/div/div[1]")).click();
 		Thread.sleep(2000);
 		//1.9 to click on Dynamic Properties module
-		driver.findElement(By.xpath("//*[@id=\"item-9\"]/span")).click();
-		Thread.sleep(2000);
-	}
+		driver.findElement(By.xpath("//*[@id=\"item-8\"]/span")).click();
+		WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+        WebElement enableBtn = wait.until(ExpectedConditions.elementToBeClickable(By.id("enableAfter")));
+        enableBtn.click();
+        System.out.println("Will enable 5 seconds clicked");
+        WebElement visibleBtn = wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("visibleAfter")));
+        visibleBtn.click();
+        System.out.println("Hidden button clicked");
+    }
 }
