@@ -37,7 +37,6 @@ public class alertsTest {
     @Test(priority = 1)
     public void testTimerAlert() {
         driver.findElement(By.id("timerAlertButton")).click();
-        //Wait Until Alert is present on screen
         wait.until(ExpectedConditions.alertIsPresent());
         Alert timerAlert = driver.switchTo().alert();
         System.out.println("Timer Alert Text: " + timerAlert.getText());
@@ -47,7 +46,6 @@ public class alertsTest {
     public void testConfirmAlert1() {
         driver.findElement(By.id("confirmButton")).click();
         Alert confirmAlert = driver.switchTo().alert();
-        //Click Cancel
         confirmAlert.dismiss(); 
         String result = driver.findElement(By.id("confirmResult")).getText();
         System.out.println(result);
@@ -57,7 +55,6 @@ public class alertsTest {
     public void testConfirmAlert2() {
         driver.findElement(By.id("confirmButton")).click();
         Alert confirmAlert = driver.switchTo().alert();
-        //Click OK
         confirmAlert.accept(); 
         String result = driver.findElement(By.id("confirmResult")).getText();
         System.out.println(result);
@@ -65,16 +62,11 @@ public class alertsTest {
     }
     @Test(priority = 4)
     public void testPromptAlert() {
-        // Scroll down to see the button
-        // JavascriptExecutor js = (JavascriptExecutor) driver;
-        // js.executeScript("window.scrollBy(0, 300)");
         driver.findElement(By.id("promtButton")).click();
         Alert promptAlert = driver.switchTo().alert();
         System.out.println("Prompt Text: " + promptAlert.getText());
-        // Type in alert box
         String myName = "Ruchit";
         promptAlert.sendKeys(myName);
-        // Click OK
         promptAlert.accept();
         String result = driver.findElement(By.id("promptResult")).getText();
         System.out.println(result);
