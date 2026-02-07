@@ -1,4 +1,4 @@
-package com.project.DemoQA;
+package com.DemoQA.A_Elements;
 
 import java.net.HttpURLConnection;
 import java.net.URL;

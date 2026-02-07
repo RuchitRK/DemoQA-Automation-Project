@@ -1,4 +1,4 @@
-package com.project.DemoQA;
+package com.DemoQA.A_Elements;
 
 import java.io.File;
 import java.io.FileInputStream;
